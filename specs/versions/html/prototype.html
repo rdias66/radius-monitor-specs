@@ -267,29 +267,26 @@
 <body>
     <div class="container">
         <h1>Especificação Técnica</h1>
-        <h2 style="margin-top: 10px; border-bottom: none;">Monitoramento Radius</h2>
+        <h2 style="margin-top: 10px; border-bottom: none;">Monitor Radius</h2>
         
-        <div class="metadata">
-            <strong>Versão:</strong> 0.1<br>
-            <strong>Data:</strong> 21/10/2025
-        </div>
         
         <hr>
         
         <h2><span class="section-number">1.</span> VISÃO GERAL</h2>
-        <p>Sistema de monitoramento integrado à plataforma SGP para detectção de anomalias de conectividade em tempo real com notificações automaticas via canal do <a href="https://web.telegram.org/" target="_blank" class="external-link">Telegram</a></p>
+        <p>Sistema de monitoramento para detecção de anomalias de conectividade via Log Radius em tempo real com notificações automaticas via canal do <a href="https://web.telegram.org/" target="_blank" class="external-link">Telegram</a></p>
         
         <hr>
         
         <h2><span class="section-number">2.</span> IMPLANTAÇÃO</h2>
         
         <h3>2.1 Integração SGP</h3>
+        <p>Feita a partir do cadastro de um Token de acesso à API. <a href="https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app" target="_blank" class="external-link">Guia e documentação próprio do SGP</a></p>
+        
         <div class="info-box">
-            <strong>Autenticação via API:</strong>
+            <strong>Requisitos:</strong>
             <ul style="margin-top: 10px; margin-bottom: 0;">
-                <li><strong>Documentação e guia do próprio SGP:</strong> <a href="https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app" target="_blank">https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app</a></li>
-                <li><strong>Tópico:</strong> Token e App</li>
-                <li><strong>Requisitos:</strong> Token de integração SGP válido e credencial(Nome) da Aplicação autorizada</li>
+                <li><strong>Token e App:</strong> Cadastrados no SGP, exemplo: radius-monitor e 09068f87-b159-474d-bfca-14d396d98d58</li>
+                <li><strong>URL SGP:</strong> URL padrão do SGP do provedor, exemplo: https://franetpg.sgp.tsmx.com.br</li>
             </ul>
         </div>
         
@@ -306,9 +303,10 @@
                 <li>Precisão de entrega de notificação de 1 a 20 segundos</li>
             </ul>
             <figure class="notification-image">
-                <img src="https://raw.githubusercontent.com/rdias66/radius-monitor-template/main/specs/assets/high_volume.png" 
+                <img src="https://raw.githubusercontent.com/rdias66/radius-monitor-specs/master/specs/assets/high_volume.png" 
                      alt="Notificação de alto volume"
-                     onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Notificação de alto volume<br><small>Imagem não disponível</small></div>'">
+                     loading="lazy"
+                     onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'image-placeholder\'>Notificação de alto volume<br><small>Imagem não disponível</small></div>'">
                 <figcaption>Notificação de alto volume</figcaption>
             </figure>
         </div>
@@ -321,9 +319,10 @@
                 <li>Precisão de entrega de notificação de 1 a 130 segundos</li>
             </ul>
             <figure class="notification-image">
-                <img src="https://raw.githubusercontent.com/rdias66/radius-monitor-template/main/specs/assets/outage_detection.png" 
+                <img src="https://raw.githubusercontent.com/rdias66/radius-monitor-specs/master/specs/assets/outage_detection.png" 
                      alt="Notificação de queda regional"
-                     onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Notificação de queda regional<br><small>Imagem não disponível</small></div>'">
+                     loading="lazy"
+                     onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'image-placeholder\'>Notificação de queda regional<br><small>Imagem não disponível</small></div>'">
                 <figcaption>Notificação de queda regional</figcaption>
             </figure>
         </div>
@@ -336,9 +335,10 @@
                 <li>Precisão de entrega de notificação de 1 a 130 segundos</li>
             </ul>
             <figure class="notification-image">
-                <img src="https://raw.githubusercontent.com/rdias66/radius-monitor-template/main/specs/assets/outage_resolution.png" 
+                <img src="https://raw.githubusercontent.com/rdias66/radius-monitor-specs/master/specs/assets/outage_resolution.png" 
                      alt="Notificação de resolução queda regional"
-                     onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Notificação de resolução queda regional<br><small>Imagem não disponível</small></div>'">
+                     loading="lazy"
+                     onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'image-placeholder\'>Notificação de resolução queda regional<br><small>Imagem não disponível</small></div>'">
                 <figcaption>Notificação de resolução queda regional</figcaption>
             </figure>
         </div>
@@ -393,14 +393,6 @@
         
         <hr>
         
-        <h2><span class="section-number">6.</span> REQUISITOS</h2>
-        <ul>
-            <li><strong>Token e App:</strong> Cadastrados no SGP, exemplo: radius-monitor e 09068f87-b159-474d-bfca-14d396d98d58</li>
-            <li><strong>URL SGP:</strong> URL padrão do SGP do provedor, exemplo: https://franetpg.sgp.tsmx.com.br</li>
-        </ul>
-        
-        <hr>
-        
         <h2><span class="section-number">7.</span> PRÓXIMOS PASSOS</h2>
         <ol>
             <li>Integração com API SGP</li>
@@ -423,7 +415,7 @@
                 <tr>
                     <td>0.1</td>
                     <td>21/10/2025</td>
-                    <td>Protótipo para testes</td>
+                    <td>Especificação do protótipo de testes</td>
                 </tr>
             </tbody>
         </table>

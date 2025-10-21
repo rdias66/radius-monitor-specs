@@ -1,14 +1,10 @@
 # Especificação Técnica
 ## Monitoramento Radius
-
-**Versão:** 0.1  
-**Data:** 21/10/2025
-
 ---
 
 ## 1. VISÃO GERAL
 
-Sistema de monitoramento integrado à plataforma SGP para detectção de  anomalias de conectividade em tempo real com notificações automaticas via canal do [Telegram ↗](https://web.telegram.org/) 
+Sistema de monitoramento para detecção de anomalias de conectividade via Log Radius em tempo real com notificações automaticas via canal do [Telegram ↗](https://web.telegram.org/) 
 
 ---
 
@@ -16,10 +12,11 @@ Sistema de monitoramento integrado à plataforma SGP para detectção de  anomal
 
 ### 2.1 Integração SGP
 
-**Autenticação via API:**
-- **Documentação e guia do próprio SGP:** https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app
-- **Tópico:**  Token e App
-- **Requisitos:** Token de integração SGP válido e credencial(Nome) da Aplicação autorizada
+Feita a partir do cadastro de um Token de acesso à API. [Guia e documentação próprio do SGP ↗](https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app)
+
+ **Requisitos:** 
+- **Token e App:** Cadastrados no SGP, exemplo: radius-monitor e 09068f87-b159-474d-bfca-14d396d98d58
+- **URL SGP:** URL padrão do SGP do provedor, exemplo: https://franetpg.sgp.tsmx.com.br
 
 ---
 
@@ -29,22 +26,22 @@ Sistema de monitoramento integrado à plataforma SGP para detectção de  anomal
 
 **1. Alerta de Alto Volume de Desconexões**
 - Disparado quando desconexões excedem limite configurado, indica aumento anormal na taxa de desconexões
-- Precisão de entrega de notificação de 1 a 20 segundos
-![Notificação de alto volume](https://github.com/rdias66/radius-monitor-template/blob/main/specs/assets/high_volume.png?raw=true)
+- Precisão de entrega de notificação de 1 a 40 segundos
+![Notificação de alto volume](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/high_volume.png?raw=true)
 
 
 **2. Queda Regional Detectada**
 - Notificação crítica de perda simultânea de conectividade em região específica
 - Prioridade alta, requer ação imediata
 - Precisão de entrega de notificação de 1 a 130 segundos
-![Notificação de queda regional](https://github.com/rdias66/radius-monitor-template/blob/main/specs/assets/outage_detection.png?raw=true)
+![Notificação de queda regional](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/outage_detection.png?raw=true)
 
 
 **3. Queda Regional Resolvida**
 - Confirmação de restauração da conectividade
 - Permite fechamento do incidente
 - Precisão de entrega de notificação de 1 a 130 segundos
-![Notificação de resolução queda regional](https://github.com/rdias66/radius-monitor-template/blob/main/specs/assets/outage_resolution.png?raw=true)
+![Notificação de resolução queda regional](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/outage_resolution.png?raw=true)
 
 
 ### 3.2 Parâmetros Configuráveis
@@ -71,13 +68,6 @@ O agrupamento de conexões é feito através do cadastro do cliente:
 2. Triagem feita a partir da analise de latitude e longitude
 
 > É essencial que os dados de localizações dos clientes e contratos estejam cadastrados no SGP
-
----
-
-## 6. REQUISITOS
-
-- **Token e App:** Cadastrados no SGP, exemplo: radius-monitor e 09068f87-b159-474d-bfca-14d396d98d58
-- **URL SGP:** URL padrão do SGP do provedor, exemplo: https://franetpg.sgp.tsmx.com.br
 
 ---
 
