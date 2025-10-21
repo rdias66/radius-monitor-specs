@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especificação Técnica - Monitoramento Radius</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 50px 60px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        h3 {
+            font-size: 1.3em;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .metadata {
+            background-color: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+        
+        .metadata strong {
+            color: #2c3e50;
+            margin-right: 10px;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #dfe6e9;
+            margin: 30px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        code {
+            background-color: #f1f3f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e74c3c;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            word-wrap: break-word;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .external-link::after {
+            content: " ↗";
+            font-size: 0.85em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        thead tr {
+            background-color: #3498db;
+            color: #ffffff;
+            text-align: left;
+        }
+        
+        th, td {
+            padding: 15px;
+            border: 1px solid #dfe6e9;
+        }
+        
+        tbody tr {
+            background-color: #ffffff;
+        }
+        
+        tbody tr:nth-of-type(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tbody tr:hover {
+            background-color: #ecf0f1;
+        }
+        
+        .info-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        blockquote {
+            background-color: #f8f9fa;
+            border-left: 4px solid #95a5a6;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .section-number {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .notification-item {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+        
+        .notification-image {
+            margin: 20px 0;
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .notification-image img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 2px solid #dfe6e9;
+            display: block;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        
+        .notification-image figcaption {
+            margin-top: 12px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .image-placeholder {
+            background-color: #ecf0f1;
+            border: 2px dashed #95a5a6;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #7f8c8d;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .image-placeholder::before {
+            content: "🖼️";
+            font-size: 3em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            table {
+                font-size: 0.85em;
+            }
+            
+            th, td {
+                padding: 10px;
+            }
+            
+            .notification-image {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Especificação Técnica</h1>
+        <h2 style="margin-top: 10px; border-bottom: none;">Monitoramento Radius</h2>
+        
+        <div class="metadata">
+            <strong>Versão:</strong> 0.1<br>
+            <strong>Data:</strong> 21/10/2025
+        </div>
+        
+        <hr>
+        
+        <h2><span class="section-number">1.</span> VISÃO GERAL</h2>
+        <p>Sistema de monitoramento integrado à plataforma SGP para detectção de anomalias de conectividade em tempo real com notificações automaticas via canal do <a href="https://web.telegram.org/" target="_blank" class="external-link">Telegram</a></p>
+        
+        <hr>
+        
+        <h2><span class="section-number">2.</span> IMPLANTAÇÃO</h2>
+        
+        <h3>2.1 Integração SGP</h3>
+        <div class="info-box">
+            <strong>Autenticação via API:</strong>
+            <ul style="margin-top: 10px; margin-bottom: 0;">
+                <li><strong>Documentação e guia do próprio SGP:</strong> <a href="https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app" target="_blank">https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app</a></li>
+                <li><strong>Tópico:</strong> Token e App</li>
+                <li><strong>Requisitos:</strong> Token de integração SGP válido e credencial(Nome) da Aplicação autorizada</li>
+            </ul>
+        </div>
+        
+        <hr>
+        
+        <h2><span class="section-number">3.</span> ESPECIFICAÇÕES TÉCNICAS</h2>
+        
+        <h3>3.1 Tipos de Notificação e precisão de detecção</h3>
+        
+        <div class="notification-item">
+            <p><strong>1. Alerta de Alto Volume de Desconexões</strong></p>
+            <ul>
+                <li>Disparado quando desconexões excedem limite configurado, indica aumento anormal na taxa de desconexões</li>
+                <li>Precisão de entrega de notificação de 1 a 20 segundos</li>
+            </ul>
+            <figure class="notification-image">
+                <img src="https://raw.githubusercontent.com/rdias66/radius-monitor-template/main/specs/assets/high_volume.png" 
+                     alt="Notificação de alto volume"
+                     onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Notificação de alto volume<br><small>Imagem não disponível</small></div>'">
+                <figcaption>Notificação de alto volume</figcaption>
+            </figure>
+        </div>
+        
+        <div class="notification-item">
+            <p><strong>2. Queda Regional Detectada</strong></p>
+            <ul>
+                <li>Notificação crítica de perda simultânea de conectividade em região específica</li>
+                <li>Prioridade alta, requer ação imediata</li>
+                <li>Precisão de entrega de notificação de 1 a 130 segundos</li>
+            </ul>
+            <figure class="notification-image">
+                <img src="https://raw.githubusercontent.com/rdias66/radius-monitor-template/main/specs/assets/outage_detection.png" 
+                     alt="Notificação de queda regional"
+                     onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Notificação de queda regional<br><small>Imagem não disponível</small></div>'">
+                <figcaption>Notificação de queda regional</figcaption>
+            </figure>
+        </div>
+        
+        <div class="notification-item">
+            <p><strong>3. Queda Regional Resolvida</strong></p>
+            <ul>
+                <li>Confirmação de restauração da conectividade</li>
+                <li>Permite fechamento do incidente</li>
+                <li>Precisão de entrega de notificação de 1 a 130 segundos</li>
+            </ul>
+            <figure class="notification-image">
+                <img src="https://raw.githubusercontent.com/rdias66/radius-monitor-template/main/specs/assets/outage_resolution.png" 
+                     alt="Notificação de resolução queda regional"
+                     onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Notificação de resolução queda regional<br><small>Imagem não disponível</small></div>'">
+                <figcaption>Notificação de resolução queda regional</figcaption>
+            </figure>
+        </div>
+        
+        <h3>3.2 Parâmetros Configuráveis</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Descrição</th>
+                    <th>Padrão</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>limite_minimo_alto_volume</code></td>
+                    <td>Mínimo de desconexões para alerta de alto volume</td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td><code>limite_minimo_queda_regional</code></td>
+                    <td>Mínimo de desconexões para queda regional</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><code>porcentagem_minima_resolucao</code></td>
+                    <td>Percentual mínimo para considerar uma queda resolvida</td>
+                    <td>60%</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <hr>
+        
+        <h2><span class="section-number">4.</span> CALIBRAÇÃO</h2>
+        <p>Os valores ideais dos parâmetros serão ajustados através de testes progressivos:</p>
+        <ol>
+            <li>Implementação de valores iniciais</li>
+            <li>Monitoramento de falsos positivos/negativos</li>
+            <li>Refinamento iterativo dos limiares</li>
+        </ol>
+        
+        <p>O agrupamento de conexões é feito através do cadastro do cliente:</p>
+        <ol>
+            <li>Inicialmente agrupados via campo "Bairro"</li>
+            <li>Triagem feita a partir da analise de latitude e longitude</li>
+        </ol>
+        
+        <blockquote>
+            É essencial que os dados de localizações dos clientes e contratos estejam cadastrados no SGP
+        </blockquote>
+        
+        <hr>
+        
+        <h2><span class="section-number">6.</span> REQUISITOS</h2>
+        <ul>
+            <li><strong>Token e App:</strong> Cadastrados no SGP, exemplo: radius-monitor e 09068f87-b159-474d-bfca-14d396d98d58</li>
+            <li><strong>URL SGP:</strong> URL padrão do SGP do provedor, exemplo: https://franetpg.sgp.tsmx.com.br</li>
+        </ul>
+        
+        <hr>
+        
+        <h2><span class="section-number">7.</span> PRÓXIMOS PASSOS</h2>
+        <ol>
+            <li>Integração com API SGP</li>
+            <li>Implementação do monitoramento</li>
+            <li>Fase de testes e calibração</li>
+            <li>Implantação em produção</li>
+        </ol>
+        
+        <hr>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Versão</th>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0.1</td>
+                    <td>21/10/2025</td>
+                    <td>Protótipo para testes</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
