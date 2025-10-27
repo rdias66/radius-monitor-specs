@@ -35,21 +35,21 @@ Feita a partir do cadastro de um Token de acesso à API. [Guia e documentação 
 - Disparado quando desconexões excedem limite configurado, indica aumento anormal na taxa de desconexões
 - Precisão de entrega de notificação de 1 a 40 segundos
 
-![Notificação de alto volume](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/high_volume.png?raw=true)
+![Notificação de alto volume](../../assets/high_volume.png)
 
 **2. Queda Regional Detectada**
 - Notificação crítica de perda simultânea de conectividade em região específica
 - Prioridade alta, requer ação imediata
 - Precisão de entrega de notificação de 1 a 130 segundos
 
-![Notificação de queda regional](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/outage_detection.png?raw=true)
+![Notificação de queda regional](../../assets/outage_detecion.png)
 
 **3. Queda Regional Resolvida**
 - Confirmação de restauração da conectividade
 - Permite fechamento do incidente
 - Precisão de entrega de notificação de 1 a 130 segundos
 
-![Notificação de resolução queda regional](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/outage_resolution.png?raw=true)
+![Notificação de resolução queda regional](../../assets/outage_resolution.png)
 
 ### 3.2 Parâmetros Configuráveis
 
