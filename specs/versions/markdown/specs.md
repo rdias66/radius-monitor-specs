@@ -23,7 +23,7 @@ Feita a partir do cadastro de um Token de acesso à API. [Guia e documentação 
 
 **Pré-requisitos:**
 - **Token e App:** Cadastrados no SGP, exemplo: radius-monitor e 111000-a1b2-c3d4-e5f6-12345678abc
-- **URL SGP:** URL padrão do SGP do provedor, exemplo: https://franetpg.sgp.tsmx.com.br
+- **URL SGP:** URL padrão do SGP do provedor, exemplo: https://meuprovedor.sgp.tsmx.com.br
 
 ---
 
