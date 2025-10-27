@@ -1,10 +1,17 @@
 # Especificação Técnica
 ## Monitoramento Radius
+
 ---
 
 ## 1. VISÃO GERAL
 
-Sistema de monitoramento para detecção de anomalias de conectividade via Log Radius em tempo real com notificações automaticas via canal do [Telegram ↗](https://web.telegram.org/) 
+Monitor Radius é uma solução de monitoramento inteligente que detecta automaticamente anomalias de conectividade em tempo real, permitindo resposta rápida a incidentes que afetam os clientes.
+
+### 1.1 Casos de Uso
+- Identificação rápida de quedas regionais de rede
+- Monitoramento de picos anormais de desconexões
+- Acompanhamento de resolução de incidentes
+- Análise de padrões de conectividade
 
 ---
 
@@ -12,37 +19,37 @@ Sistema de monitoramento para detecção de anomalias de conectividade via Log R
 
 ### 2.1 Integração SGP
 
-Feita a partir do cadastro de um Token de acesso à API. [Guia e documentação próprio do SGP ↗](https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app)
+Feita a partir do cadastro de um Token de acesso à API. [Guia e documentação própria do SGP ↗](https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app)
 
- **Requisitos:** 
-- **Token e App:** Cadastrados no SGP, exemplo: radius-monitor e 09068f87-b159-474d-bfca-14d396d98d58
+**Pré-requisitos:**
+- **Token e App:** Cadastrados no SGP, exemplo: radius-monitor e 111000-a1b2-c3d4-e5f6-12345678abc
 - **URL SGP:** URL padrão do SGP do provedor, exemplo: https://franetpg.sgp.tsmx.com.br
 
 ---
 
 ## 3. ESPECIFICAÇÕES TÉCNICAS
 
-### 3.1 Tipos de Notificação e precisão de detecção
+### 3.1 Tipos de Notificação e Precisão de Detecção
 
 **1. Alerta de Alto Volume de Desconexões**
 - Disparado quando desconexões excedem limite configurado, indica aumento anormal na taxa de desconexões
 - Precisão de entrega de notificação de 1 a 40 segundos
-![Notificação de alto volume](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/high_volume.png?raw=true)
 
+![Notificação de alto volume](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/high_volume.png?raw=true)
 
 **2. Queda Regional Detectada**
 - Notificação crítica de perda simultânea de conectividade em região específica
 - Prioridade alta, requer ação imediata
 - Precisão de entrega de notificação de 1 a 130 segundos
-![Notificação de queda regional](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/outage_detection.png?raw=true)
 
+![Notificação de queda regional](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/outage_detection.png?raw=true)
 
 **3. Queda Regional Resolvida**
 - Confirmação de restauração da conectividade
 - Permite fechamento do incidente
 - Precisão de entrega de notificação de 1 a 130 segundos
-![Notificação de resolução queda regional](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/outage_resolution.png?raw=true)
 
+![Notificação de resolução queda regional](https://github.com/rdias66/radius-monitor-specs/blob/master/specs/assets/outage_resolution.png?raw=true)
 
 ### 3.2 Parâmetros Configuráveis
 
@@ -51,6 +58,8 @@ Feita a partir do cadastro de um Token de acesso à API. [Guia e documentação 
 | `limite_minimo_alto_volume` | Mínimo de desconexões para alerta de alto volume | 35 |
 | `limite_minimo_queda_regional` | Mínimo de desconexões para queda regional | 10 |
 | `porcentagem_minima_resolucao` | Percentual mínimo para considerar uma queda resolvida | 60% |
+
+> Os valores padrão são baseados em testes prévios a partir de bases de clientes similares. Para alterá-los, entrar em contato com o desenvolvedor.
 
 ---
 
@@ -64,14 +73,16 @@ Os valores ideais dos parâmetros serão ajustados através de testes progressiv
 
 O agrupamento de conexões é feito através do cadastro do cliente:
 
-1. Inicialmente agrupados via campo "Bairro" 
-2. Triagem feita a partir da analise de latitude e longitude
+1. Inicialmente agrupados via campo "Bairro"
+2. Triagem feita a partir da análise de latitude e longitude
 
-> É essencial que os dados de localizações dos clientes e contratos estejam cadastrados no SGP
+É essencial para a precisão das detecções que os dados de localizações dos clientes e contratos estejam cadastrados no SGP.
+
+Caso esses dados não estejam cadastrados, a detecção será feita apenas a partir do horário das desconexões, podendo causar maior incidência de falsos positivos.
 
 ---
 
-## 7. PRÓXIMOS PASSOS
+## 5. PRÓXIMOS PASSOS
 
 1. Integração com API SGP
 2. Implementação do monitoramento
@@ -80,5 +91,9 @@ O agrupamento de conexões é feito através do cadastro do cliente:
 
 ---
 
-**Versão** | **Data** | **Descrição**
-0.1 | 21/10/2025 | Protótipo para testes
+## Controle de Versões
+
+| Versão | Data       | Descrição                |
+|--------|------------|--------------------------|
+| 0.1    | 21/10/2025 | Protótipo para testes    |
+| 0.2    | 27/10/2025 | Melhoria do protótipo    |
