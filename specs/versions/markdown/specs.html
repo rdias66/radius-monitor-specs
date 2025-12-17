@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Especificação Técnica - Monitoramento Radius</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    h1, h2, h3, h4 {
+      color: #2c3e50;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.3em;
+      border-bottom: 4px solid #2c3e50;
+      padding-bottom: 0.3em;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.3em;
+      margin-top: 2.5em;
+      font-size: 1.6em;
+    }
+
+    h3 {
+      margin-top: 1.8em;
+      font-size: 1.3em;
+      color: #34495e;
+    }
+
+    h4 {
+      margin-top: 1.5em;
+      font-size: 1.1em;
+      color: #34495e;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5em 0;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #34495e;
+      color: white;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    blockquote {
+      margin: 1.5em 0;
+      padding: 1em 1.5em;
+      background-color: #fff3cd;
+      border-left: 5px solid #ffc107;
+      font-style: italic;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 25px;
+      margin: 0.8em 0;
+    }
+
+    ul li {
+      margin: 0.5em 0;
+    }
+
+    ol {
+      padding-left: 25px;
+      margin: 0.8em 0;
+    }
+
+    ol li {
+      margin: 0.5em 0;
+    }
+
+    .destaque {
+      background-color: #e3f2fd;
+      padding: 1.2em;
+      border-left: 4px solid #2196f3;
+      margin: 1.5em 0;
+    }
+
+    .destaque strong {
+      color: #1976d2;
+    }
+
+    .pre-requisitos {
+      background-color: #f3e5f5;
+      padding: 1.2em;
+      border-left: 4px solid #9c27b0;
+      margin: 1.5em 0;
+    }
+
+    .alerta {
+      background-color: #ffebee;
+      padding: 1.2em;
+      border-left: 4px solid #f44336;
+      margin: 1.5em 0;
+    }
+
+    .info {
+      background-color: #e8f5e9;
+      padding: 1.2em;
+      border-left: 4px solid #4caf50;
+      margin: 1.5em 0;
+    }
+
+    .notificacao-box {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1.2em;
+      margin: 1.5em 0;
+    }
+
+    .notificacao-box h4 {
+      margin-top: 0;
+      color: #2c3e50;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.5em;
+    }
+
+    .notificacao-box ul {
+      margin-bottom: 0.5em;
+    }
+
+    .notificacao-box .precisao {
+      background-color: #e3f2fd;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      margin-top: 0.8em;
+      font-weight: bold;
+      color: #1976d2;
+    }
+
+    .image-placeholder {
+      background-color: #f5f5f5;
+      border: 2px dashed #ccc;
+      padding: 2em;
+      text-align: center;
+      margin: 1em 0;
+      color: #666;
+      font-style: italic;
+      border-radius: 4px;
+    }
+
+    hr {
+      margin: 3em 0;
+      border: none;
+      border-top: 2px solid #e0e0e0;
+    }
+
+    a {
+      color: #0077b6;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 4em;
+      padding-top: 2em;
+      border-top: 2px solid #ddd;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .versoes-table {
+      margin-top: 2em;
+    }
+
+    .versoes-table th {
+      background-color: #607d8b;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: "Courier New", monospace;
+      color: #c7254e;
+      font-size: 0.95em;
+    }
+
+    strong {
+      color: #2c3e50;
+    }
+
+    .section-number {
+      color: #607d8b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Especificação Técnica</h1>
+<h2>Monitoramento Radius</h2>
+
+<hr>
+
+<h2><span class="section-number">1.</span> VISÃO GERAL</h2>
+
+<p>Monitor Radius é uma solução de monitoramento inteligente que detecta automaticamente anomalias de conectividade em tempo real, permitindo resposta rápida a incidentes que afetam os clientes.</p>
+
+<h3>1.1 Casos de Uso</h3>
+<ul>
+  <li>Identificação rápida de quedas regionais de rede</li>
+  <li>Análise de possível causa de queda regional (LOS, LOSi/LOBi, DyingGasp etc)</li>
+  <li>Monitoramento de picos anormais de desconexões</li>
+  <li>Acompanhamento de resolução de incidentes</li>
+  <li>Detecção de atenuações e rompimentos individuais</li>
+</ul>
+
+<hr>
+
+<h2><span class="section-number">2.</span> IMPLANTAÇÃO</h2>
+
+<h3>2.1 Integração SGP</h3>
+
+<p>Feita a partir do cadastro de um Token de acesso à API. <a href="https://bookstack.sgp.net.br/books/api/page/autenticacoes-via-api#bkmrk-02-%7C-token-e-app" target="_blank">Guia e documentação própria do SGP ↗</a></p>
+
+<div class="pre-requisitos">
+  <h4>Pré-requisitos:</h4>
+  <ul>
+    <li><strong>Token e App:</strong> Cadastrados no SGP, exemplo: <code>radius-monitor</code> e <code>111000-a1b2-c3d4-e5f6-12345678abc</code></li>
+    <li><strong>URL SGP:</strong> URL padrão do SGP do provedor, exemplo: <code>https://meuprovedor.sgp.tsmx.com.br</code></li>
+  </ul>
+</div>
+
+<hr>
+
+<h2><span class="section-number">3.</span> ESPECIFICAÇÕES TÉCNICAS</h2>
+
+<h3>3.1 Tipos de Notificação e Precisão de Detecção</h3>
+
+<div class="notificacao-box">
+  <h4>1. Alerta de Alto Volume de Desconexões</h4>
+  <ul>
+    <li>Disparado quando desconexões excedem limite configurado, indica aumento anormal na taxa de desconexões</li>
+  </ul>
+  <div class="precisao">Precisão de entrega de notificação: 1 a 40 segundos</div>
+  <div class="image-placeholder">
+    <p>📊 Imagem: Notificação de alto volume</p>
+    <p><small>(../../assets/high_volume.png)</small></p>
+  </div>
+</div>
+
+<div class="notificacao-box">
+  <h4>2. Queda Regional Detectada</h4>
+  <ul>
+    <li>Notificação de quedas simultâneas na mesma região (triagem por bairro)</li>
+  </ul>
+  <div class="precisao">Precisão de entrega de notificação: 1 a 130 segundos</div>
+  <div class="image-placeholder">
+    <p>📊 Imagem: Notificação de queda regional</p>
+    <p><small>(../../assets/outage_detection.png)</small></p>
+  </div>
+</div>
+
+<div class="notificacao-box">
+  <h4>3. Análise de Causa de Queda Regional</h4>
+  <ul>
+    <li>A partir de uma queda regional não resolvida em uma janela de 120 segundos, a análise da causa de queda é verificada em uma amostra de clientes afetados</li>
+    <li><strong>Funcionalidade depende</strong> de dados referentes a ONU cadastrados e integrados ao SGP (seção "FTTx Detalhes" no contrato)</li>
+  </ul>
+  <div class="precisao">Precisão de entrega: 1 a 360 segundos</div>
+  <div class="image-placeholder">
+    <p>📊 Imagem: Notificação de Análise de Causa de Queda Regional</p>
+    <p><small>(../../assets/outage_possible_cause.png)</small></p>
+  </div>
+</div>
+
+<div class="notificacao-box">
+  <h4>4. Queda Regional Resolvida</h4>
+  <ul>
+    <li>Confirmação de restauração da conectividade a partir de retorno proporcional calibrável, ex. 60% dos clientes afetados reconectados</li>
+    <li>Permite fechamento do incidente</li>
+  </ul>
+  <div class="precisao">Precisão de entrega de notificação: 1 a 130 segundos</div>
+  <div class="image-placeholder">
+    <p>📊 Imagem: Notificação de resolução queda regional</p>
+    <p><small>(../../assets/outage_resolution.png)</small></p>
+  </div>
+</div>
+
+<div class="notificacao-box">
+  <h4>5. "Anomalia" Individual Detectada</h4>
+  <ul>
+    <li>Notificação de desconexão individual ocasionada por atenuação ou rompimento no trajeto do sinal óptico</li>
+    <li><strong>Funcionalidade depende</strong> de dados referentes a ONU cadastrados e integrados ao SGP (seção "FTTx Detalhes" no contrato)</li>
+  </ul>
+  <div class="precisao">Precisão de entrega de notificação: 1 a 360 segundos</div>
+  <div class="image-placeholder">
+    <p>📊 Imagem: Notificação de anomalia individual detectada</p>
+    <p><small>(../../assets/dc_info.png)</small></p>
+  </div>
+</div>
+
+<h3>3.2 Parâmetros Configuráveis</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parâmetro</th>
+      <th>Descrição</th>
+      <th>Padrão</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>limite_minimo_alto_volume</code></td>
+      <td>Mínimo de desconexões para alerta de alto volume</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td><code>limite_minimo_queda_regional</code></td>
+      <td>Mínimo de desconexões para queda regional</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td><code>porcentagem_minima_resolucao</code></td>
+      <td>Percentual mínimo para considerar uma queda resolvida</td>
+      <td>60%</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  Os valores padrão são baseados em testes prévios a partir de bases de clientes similares. Para alterá-los, entrar em contato com o desenvolvedor.
+</blockquote>
+
+<hr>
+
+<h2><span class="section-number">4.</span> CALIBRAÇÃO</h2>
+
+<h3>4.1 Das Quedas Regionais</h3>
+
+<p>Os valores ideais dos parâmetros serão ajustados através de testes progressivos:</p>
+
+<ol>
+  <li>Implementação de valores iniciais</li>
+  <li>Monitoramento de falsos positivos/negativos</li>
+  <li>Refinamento iterativo dos limiares</li>
+</ol>
+
+<p>O agrupamento de conexões é feito através do cadastro do cliente:</p>
+
+<ol>
+  <li>Agrupados via campo "Bairro" nos dados de endereço do contrato</li>
+</ol>
+
+<div class="alerta">
+  <p><strong>⚠️ Importante:</strong> É essencial para a precisão das detecções que os dados de localizações dos clientes e contratos estejam cadastrados no SGP.</p>
+  <p>Caso esses dados não estejam cadastrados, a detecção será feita apenas a partir do horário das desconexões, podendo causar maior incidência de falsos positivos.</p>
+</div>
+
+<h3>4.2 Da Determinação de Causa e Detecções Individuais</h3>
+
+<div class="info">
+  <p>Essas funcionalidades dependem de contratos cadastrados com a ONU atrelada ao SGP e integrados à seção de <strong>FTTx Detalhes</strong>.</p>
+  <p>Caso não seja inteiramente aplicável, especificar setores da rede que são aplicáveis. Ex.: POPs, bairros ou condomínios específicos etc.</p>
+</div>
+
+<hr>
+
+<h2><span class="section-number">5.</span> PRÓXIMOS PASSOS</h2>
+
+<ol>
+  <li>Integração com API SGP</li>
+  <li>Implementação do monitoramento</li>
+  <li>Fase de testes e calibração</li>
+  <li>Implantação em produção</li>
+</ol>
+
+<hr>
+
+<h2>Controle de Versões</h2>
+
+<table class="versoes-table">
+  <thead>
+    <tr>
+      <th>Versão</th>
+      <th>Data</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.1</td>
+      <td>21/10/2025</td>
+      <td>Protótipo para testes</td>
+    </tr>
+    <tr>
+      <td>0.2</td>
+      <td>27/10/2025</td>
+      <td>Melhoria do protótipo</td>
+    </tr>
+    <tr>
+      <td>0.3</td>
+      <td>17/12/2025</td>
+      <td>Fluxo de downcause integrado</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="footer">
+  <p>Especificação Técnica - Monitor Radius v0.3</p>
+  <p>Última atualização: 17 de dezembro de 2025</p>
+</div>
+
+</body>
+</html>

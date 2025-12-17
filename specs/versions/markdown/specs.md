@@ -9,9 +9,10 @@ Monitor Radius é uma solução de monitoramento inteligente que detecta automat
 
 ### 1.1 Casos de Uso
 - Identificação rápida de quedas regionais de rede
+- Análise de possivel causa de queda regional (LOS, LOSi/LOBi, DyingGasp etc)
 - Monitoramento de picos anormais de desconexões
 - Acompanhamento de resolução de incidentes
-- Análise de padrões de conectividade
+- Detecção de atenuações e rompimentos individuais
 
 ---
 
@@ -38,18 +39,31 @@ Feita a partir do cadastro de um Token de acesso à API. [Guia e documentação 
 ![Notificação de alto volume](../../assets/high_volume.png)
 
 **2. Queda Regional Detectada**
-- Notificação crítica de perda simultânea de conectividade em região específica
-- Prioridade alta, requer ação imediata
+- Notificação de quedas simultâneas na mesma regiao (triagem por bairro) 
 - Precisão de entrega de notificação de 1 a 130 segundos
 
 ![Notificação de queda regional](../../assets/outage_detecion.png)
 
-**3. Queda Regional Resolvida**
-- Confirmação de restauração da conectividade
+**3. Análise de Causa de Queda Regional**
+- A partir de uma queda regional nao resolvida em uma janela de 120 segundos a analise da causa de queda é verificada em uma amostra de clientes afetados
+- Precisao de entrega de 1 a 360 segundos
+- Funcionalidade depende de dados referentes a ONU cadastrados e integrados ao SGP. (seçao "FTTx Detalhes" no contrato)
+
+![Notificação de Análise de Causa de Queda Regional](../../assets/outage_possible_cause.png)
+
+**4. Queda Regional Resolvida**
+- Confirmação de restauração da conectividade a partir de retorno proporcional calibravel, ex. 60% dos clientes afetados reconectados.
 - Permite fechamento do incidente
 - Precisão de entrega de notificação de 1 a 130 segundos
 
 ![Notificação de resolução queda regional](../../assets/outage_resolution.png)
+
+**5. "Anomalia" individual Detectada**
+- Notificação de desconexao individual ocasionada por atenuação ou rompimento no trajeto do sinal optico
+- Funcionalidade depende de dados referentes a ONU cadastrados e integrados ao SGP. (seçao "FTTx Detalhes" no contrato)
+- Precisao de entrega de notificação de 1 a 360 segundos
+
+![Notificação de anomalia individual detectada](../../assets/dc_info.png)
 
 ### 3.2 Parâmetros Configuráveis
 
@@ -65,6 +79,8 @@ Feita a partir do cadastro de um Token de acesso à API. [Guia e documentação 
 
 ## 4. CALIBRAÇÃO
 
+### 4.1 Das quedas regionais
+
 Os valores ideais dos parâmetros serão ajustados através de testes progressivos:
 
 1. Implementação de valores iniciais
@@ -73,12 +89,17 @@ Os valores ideais dos parâmetros serão ajustados através de testes progressiv
 
 O agrupamento de conexões é feito através do cadastro do cliente:
 
-1. Inicialmente agrupados via campo "Bairro"
-2. Triagem feita a partir da análise de latitude e longitude
+1. Agrupados via campo "Bairro" nos dados de endereço do contrato
 
 É essencial para a precisão das detecções que os dados de localizações dos clientes e contratos estejam cadastrados no SGP.
 
 Caso esses dados não estejam cadastrados, a detecção será feita apenas a partir do horário das desconexões, podendo causar maior incidência de falsos positivos.
+
+### 4.2 Da determinação de causa e detecçoes individuais
+
+Essas funcionalidades dependem de contratos cadastrados com a ONU atrelada ao sgp e integrados à seção de FTTx Detalhes.
+Caso nao seja inteiramente aplicavel especificar setores da rede que são aplicaveis. Ex. POPs , bairros ou condominios espeficicos etc.
+
 
 ---
 
@@ -86,7 +107,7 @@ Caso esses dados não estejam cadastrados, a detecção será feita apenas a par
 
 1. Integração com API SGP
 2. Implementação do monitoramento
-3. Fase de testes e calibração
+3. Fase de testes e calibração 
 4. Implantação em produção
 
 ---
@@ -97,3 +118,4 @@ Caso esses dados não estejam cadastrados, a detecção será feita apenas a par
 |--------|------------|--------------------------|
 | 0.1    | 21/10/2025 | Protótipo para testes    |
 | 0.2    | 27/10/2025 | Melhoria do protótipo    |
+| 0.3    | 17/12/2025 | Fluxo de downcause integrado    |
