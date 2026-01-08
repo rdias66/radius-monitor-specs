@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Monitor Radius — Documento Técnico</title>
+
+<style>
+@page{ margin:20mm 18mm; }
+
+body{
+  font-family: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  line-height:1.7;
+  color:#1f2933;
+}
+
+h1,h2,h3{ font-weight:600; }
+
+h1{ font-size:2.4em; margin-bottom:.2em; }
+
+.subtitle{
+  font-size:1.1em;
+  color:#4b5563;
+  margin-bottom:2.2em;
+}
+
+.section-block{
+  margin-top:3em;
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
+
+.section-title{
+  font-size:1.4em;
+  margin-bottom:.4em;
+}
+
+.section-line{
+  height:3px;
+  width:70px;
+  background:#1f2933;
+  margin:.4em 0 1.6em 0;
+}
+
+.section-box{
+  border-top:1px solid #d1d5db;
+  padding-top:1.4em;
+}
+
+.notice-block{
+  border:1px solid #e5e7eb;
+  border-left:4px solid #111827;
+  border-radius:6px;
+  background:#fafafa;
+  padding:1.8em 2em;
+  margin-top:1.5em;
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
+
+img{
+  max-width:100%;
+  display:block;
+  margin:1.8em auto;
+  border:1px solid #d1d5db;
+  border-radius:4px;
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
+
+.page-break{ break-after:page; }
+
+ul{ margin-left:1.3em; }
+li{ margin:.6em 0; }
+
+hr{
+  border:none;
+  border-top:1px solid #e5e7eb;
+  margin:3em 0;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Monitor Radius</h1>
+<div class="subtitle"> Monitoramento Inteligente de Ocorrências em Redes de Provedores</div>
+
+<div class="section-block">
+<div class="section-title">1. Visão Geral</div>
+<div class="section-line"></div>
+<div class="section-box">
+
+<p>O Monitor Radius é um serviço de análise automática de eventos de rede baseada na observação contínua dos eventos de conexão e desconexão de clientes. Seu objetivo é identificar padrões anormais, caracterizar incidentes regionais e fornecer subsídios técnicos para resposta operacional.</p>
+
+<p>A solução foi projetada para operar de forma contínua, com baixa necessidade de parametrização manual após a calibração, permitindo que o comportamento da rede seja observado de maneira consistente ao longo do tempo.</p>
+
+</div></div>
+
+<div class="section-block">
+<div class="section-title">2. Capacidades Principais</div>
+<div class="section-line"></div>
+<div class="section-box">
+
+<ul>
+  <li>Identificação automática de padrões de desconexão.</li>
+  <li>Detecção de ocorrências regionais em janelas de 15 a 120 segundos.</li>
+  <li>Localização do incidente por região/bairro/pop.</li>
+  <li>Quantificação de clientes impactados.</li>
+  <li>Análise automática de sinais de causa provável (LOS, LOSi/LOBi, Dying Gasp).</li>
+  <li>Notificações operacionais via canais integrados.</li>
+  <li>Confirmação automática de restabelecimento.</li>
+</ul>
+
+</div></div>
+
+<div class="section-block">
+<div class="section-title">3. Funcionamento</div>
+<div class="section-line"></div>
+<div class="section-box">
+
+<p>O sistema analisa continuamente eventos de autenticação e desconexão de clientes, agrupando ocorrências e avaliando desvios em relação ao comportamento normal da rede.</p>
+
+<p>Quando padrões anormais são identificados, um incidente é automaticamente classificado, contextualizado e notificado.</p>
+
+<ul>
+  <li>Detecção automática sem necessidade de regras manuais.</li>
+  <li>Classificação por região, quantidade de clientes e período.</li>
+  <li>Correlação com indicadores ópticos para inferência de causa.</li>
+  <li>Monitoramento contínuo do restabelecimento.</li>
+</ul>
+
+</div></div>
+
+<div class="section-block">
+<div class="section-title">4. Impacto Operacional</div>
+<div class="section-line"></div>
+<div class="section-box">
+
+<ul>
+  <li>Redução do tempo médio de resposta a incidentes.</li>
+  <li>Maior previsibilidade de falhas recorrentes.</li>
+  <li>Menor dependência de abertura de chamados como gatilho inicial.</li>
+  <li>Base histórica de eventos para análise e planejamento de rede.</li>
+</ul>
+
+</div></div>
+
+<div class="section-block">
+<div class="section-title">5. Exemplos de Notificações</div>
+<div class="section-line"></div>
+<div class="section-box">
+
+<div class="notice-block">
+<h3>5.1 Aumento Anormal de Desconexões</h3>
+<p>Detecção automática de volumes anormais em curto intervalo.</p>
+<img src="../../assets/high_volume.png">
+</div>
+
+<div class="page-break"></div>
+
+<div class="notice-block">
+<h3>5.2 Detecção de Queda Regional</h3>
+<p>Identificação de falhas concentradas por área geográfica.</p>
+<img src="../../assets/outage_detection.png">
+</div>
+
+<div class="page-break"></div>
+
+<div class="notice-block">
+<h3>5.3 Análise de Causa Provável</h3>
+<p>Correlação automática com indicadores ópticos.(dependente de cadastrados no SGP)</p>
+<img src="../../assets/outage_possible_cause.png">
+</div>
+
+<div class="page-break"></div>
+
+<div class="notice-block">
+<h3>5.4 Confirmação de Restabelecimento</h3>
+<p>Monitoramento contínuo do retorno de clientes.</p>
+<img src="../../assets/outage_resolution.png">
+</div>
+
+<div class="page-break"></div>
+
+<div class="notice-block">
+<h3>5.5 Ocorrências Individuais</h3>
+<p>Identificação de falhas pontuais e degradações de sinal.(dependente de dados cadastrados no SGP)</p>
+<img src="../../assets/dc_info.png">
+</div>
+
+</div></div>
+
+<div class="section-block">
+<div class="section-title">6. Considerações Operacionais</div>
+<div class="section-line"></div>
+<div class="section-box">
+
+<p>O comportamento e o potencial de análise do sistema tornam-se progressivamente mais evidentes ao longo do período de observação inicial, no qual o serviço terá seus parâmetros calibrados com base no perfil real da rede monitorada.</p>
+
+</div></div>
+
+</body>
+</html>
