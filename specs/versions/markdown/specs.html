@@ -209,6 +209,19 @@
       color: #607d8b;
       font-weight: bold;
     }
+
+    /* Page break controls for PDF */
+    .page-break {
+      page-break-after: always;
+    }
+
+    .page-break-before {
+      page-break-before: always;
+    }
+
+    .avoid-break {
+      page-break-inside: avoid;
+    }
   </style>
 </head>
 <body>
@@ -218,6 +231,7 @@
 
 <hr>
 
+<div class="avoid-break">
 <h2><span class="section-number">1.</span> VISÃO GERAL</h2>
 
 <p>Monitor Radius é uma solução de monitoramento inteligente que detecta automaticamente anomalias de conectividade em tempo real, permitindo resposta rápida a incidentes que afetam os clientes.</p>
@@ -232,7 +246,11 @@
 </ul>
 
 <hr>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <h2><span class="section-number">2.</span> IMPLANTAÇÃO</h2>
 
 <h3>2.1 Integração SGP</h3>
@@ -248,7 +266,11 @@
 </div>
 
 <hr>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <h2><span class="section-number">3.</span> ESPECIFICAÇÕES TÉCNICAS</h2>
 
 <h3>3.1 Tipos de Notificação e Precisão de Detecção</h3>
@@ -264,7 +286,11 @@
     <p><small>(../../assets/high_volume.png)</small></p>
   </div>
 </div>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <div class="notificacao-box">
   <h4>2. Queda Regional Detectada</h4>
   <ul>
@@ -276,7 +302,11 @@
     <p><small>(../../assets/outage_detection.png)</small></p>
   </div>
 </div>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <div class="notificacao-box">
   <h4>3. Análise de Causa de Queda Regional</h4>
   <ul>
@@ -289,7 +319,11 @@
     <p><small>(../../assets/outage_possible_cause.png)</small></p>
   </div>
 </div>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <div class="notificacao-box">
   <h4>4. Queda Regional Resolvida</h4>
   <ul>
@@ -302,7 +336,11 @@
     <p><small>(../../assets/outage_resolution.png)</small></p>
   </div>
 </div>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <div class="notificacao-box">
   <h4>5. "Anomalia" Individual Detectada</h4>
   <ul>
@@ -316,41 +354,12 @@
   </div>
 </div>
 
-<h3>3.2 Parâmetros Configuráveis</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Parâmetro</th>
-      <th>Descrição</th>
-      <th>Padrão</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>limite_minimo_alto_volume</code></td>
-      <td>Mínimo de desconexões para alerta de alto volume</td>
-      <td>35</td>
-    </tr>
-    <tr>
-      <td><code>limite_minimo_queda_regional</code></td>
-      <td>Mínimo de desconexões para queda regional</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td><code>porcentagem_minima_resolucao</code></td>
-      <td>Percentual mínimo para considerar uma queda resolvida</td>
-      <td>60%</td>
-    </tr>
-  </tbody>
-</table>
-
-<blockquote>
-  Os valores padrão são baseados em testes prévios a partir de bases de clientes similares. Para alterá-los, entrar em contato com o desenvolvedor.
-</blockquote>
-
 <hr>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <h2><span class="section-number">4.</span> CALIBRAÇÃO</h2>
 
 <h3>4.1 Das Quedas Regionais</h3>
@@ -382,7 +391,11 @@
 </div>
 
 <hr>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <h2><span class="section-number">5.</span> PRÓXIMOS PASSOS</h2>
 
 <ol>
@@ -426,6 +439,7 @@
 <div class="footer">
   <p>Especificação Técnica - Monitor Radius v0.3</p>
   <p>Última atualização: 17 de dezembro de 2025</p>
+</div>
 </div>
 
 </body>
