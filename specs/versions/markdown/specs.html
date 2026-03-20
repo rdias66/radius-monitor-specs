@@ -210,6 +210,7 @@
       font-weight: bold;
     }
 
+<<<<<<< HEAD
     /* Print-specific styles */
     @media print {
       body {
@@ -249,13 +250,34 @@
       ul, ol {
         page-break-inside: avoid;
       }
+=======
+    /* Page break controls for PDF */
+    .page-break {
+      page-break-after: always;
+    }
+
+    .page-break-before {
+      page-break-before: always;
+    }
+
+    .avoid-break {
+      page-break-inside: avoid;
+>>>>>>> 99b9ed6ab969938458f03e5c7982b54f19b104b8
     }
   </style>
 </head>
 <body>
 
+<<<<<<< HEAD
 <h1>Especificação Técnica - Monitor Radius</h1>
+=======
+<h1>Especificação Técnica</h1>
+<h2>Monitoramento Radius</h2>
 
+>>>>>>> 99b9ed6ab969938458f03e5c7982b54f19b104b8
+
+
+<div class="avoid-break">
 <h2><span class="section-number">1.</span> VISÃO GERAL</h2>
 
 <p>Monitor Radius é uma solução de monitoramento inteligente que detecta automaticamente anomalias de conectividade em tempo real, permitindo resposta rápida a incidentes que afetam os clientes.</p>
@@ -270,7 +292,11 @@
 </ul>
 
 <hr>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <h2><span class="section-number">2.</span> IMPLANTAÇÃO</h2>
 
 <h3>2.1 Integração SGP</h3>
@@ -286,7 +312,11 @@
 </div>
 
 <hr>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <h2><span class="section-number">3.</span> ESPECIFICAÇÕES TÉCNICAS</h2>
 
 <h3>3.1 Tipos de Notificação e Precisão de Detecção</h3>
@@ -297,18 +327,34 @@
     <li>Disparado quando desconexões excedem limite configurado, indica aumento anormal na taxa de desconexões</li>
   </ul>
   <div class="precisao">Precisão de entrega de notificação: 1 a 40 segundos</div>
+<<<<<<< HEAD
   <img src="../../assets/high_volume.png" alt="Notificação de alto volume" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
+=======
+  <img src="../../assets/high_volume.png" alt="Notificação de alto volume" style="width: 70%; max-width: 600px; display: block; margin: 1em auto;">
+</div>
+>>>>>>> 99b9ed6ab969938458f03e5c7982b54f19b104b8
 </div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <div class="notificacao-box">
   <h4>2. Queda Regional Detectada</h4>
   <ul>
     <li>Notificação de quedas simultâneas na mesma região (triagem por bairro)</li>
   </ul>
   <div class="precisao">Precisão de entrega de notificação: 1 a 130 segundos</div>
+<<<<<<< HEAD
   <img src="../../assets/outage_detection.png" alt="Notificação de queda regional" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
+=======
+  <img src="../../assets/outage_detection.png" alt="Notificação de queda regional" style="width: 70%; max-width: 600px; display: block; margin: 1em auto;">
+</div>
+>>>>>>> 99b9ed6ab969938458f03e5c7982b54f19b104b8
 </div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <div class="notificacao-box">
   <h4>3. Análise de Causa de Queda Regional</h4>
   <ul>
@@ -316,9 +362,17 @@
     <li><strong>Funcionalidade depende</strong> de dados referentes a ONU cadastrados e integrados ao SGP (seção "FTTx Detalhes" no contrato)</li>
   </ul>
   <div class="precisao">Precisão de entrega: 1 a 360 segundos</div>
+<<<<<<< HEAD
   <img src="../../assets/outage_possible_cause.png" alt="Notificação de Análise de Causa de Queda Regional" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
+=======
+  <img src="../../assets/outage_possible_cause.png" alt="Notificação de Análise de Causa de Queda Regional" style="width: 70%; max-width: 600px; display: block; margin: 1em auto;">
+</div>
+>>>>>>> 99b9ed6ab969938458f03e5c7982b54f19b104b8
 </div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <div class="notificacao-box">
   <h4>4. Queda Regional Resolvida</h4>
   <ul>
@@ -326,9 +380,17 @@
     <li>Permite fechamento do incidente</li>
   </ul>
   <div class="precisao">Precisão de entrega de notificação: 1 a 130 segundos</div>
+<<<<<<< HEAD
   <img src="../../assets/outage_resolution.png" alt="Notificação de resolução queda regional" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
+=======
+  <img src="../../assets/outage_resolution.png" alt="Notificação de resolução queda regional" style="width: 70%; max-width: 600px; display: block; margin: 1em auto;">
+</div>
+>>>>>>> 99b9ed6ab969938458f03e5c7982b54f19b104b8
 </div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <div class="notificacao-box">
   <h4>5. "Anomalia" Individual Detectada</h4>
   <ul>
@@ -336,44 +398,19 @@
     <li><strong>Funcionalidade depende</strong> de dados referentes a ONU cadastrados e integrados ao SGP (seção "FTTx Detalhes" no contrato)</li>
   </ul>
   <div class="precisao">Precisão de entrega de notificação: 1 a 360 segundos</div>
+<<<<<<< HEAD
   <img src="../../assets/dc_info.png" alt="Notificação de anomalia individual detectada" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
+=======
+  <img src="../../assets/dc_info.png" alt="Notificação de anomalia individual detectada" style="width: 70%; max-width: 600px; display: block; margin: 1em auto;">
+>>>>>>> 99b9ed6ab969938458f03e5c7982b54f19b104b8
 </div>
 
-<h3>3.2 Parâmetros Configuráveis</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Parâmetro</th>
-      <th>Descrição</th>
-      <th>Padrão</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>limite_minimo_alto_volume</code></td>
-      <td>Mínimo de desconexões para alerta de alto volume</td>
-      <td>35</td>
-    </tr>
-    <tr>
-      <td><code>limite_minimo_queda_regional</code></td>
-      <td>Mínimo de desconexões para queda regional</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td><code>porcentagem_minima_resolucao</code></td>
-      <td>Percentual mínimo para considerar uma queda resolvida</td>
-      <td>60%</td>
-    </tr>
-  </tbody>
-</table>
-
-<blockquote>
-  Os valores padrão são baseados em testes prévios a partir de bases de clientes similares. Para alterá-los, entrar em contato com o desenvolvedor.
-</blockquote>
-
 <hr>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <h2><span class="section-number">4.</span> CALIBRAÇÃO</h2>
 
 <h3>4.1 Das Quedas Regionais</h3>
@@ -405,7 +442,11 @@
 </div>
 
 <hr>
+</div>
 
+<div class="page-break"></div>
+
+<div class="avoid-break">
 <h2><span class="section-number">5.</span> PRÓXIMOS PASSOS</h2>
 
 <ol>
@@ -417,38 +458,10 @@
 
 <hr>
 
-<h2>Controle de Versões</h2>
 
-<table class="versoes-table">
-  <thead>
-    <tr>
-      <th>Versão</th>
-      <th>Data</th>
-      <th>Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0.1</td>
-      <td>21/10/2025</td>
-      <td>Protótipo para testes</td>
-    </tr>
-    <tr>
-      <td>0.2</td>
-      <td>27/10/2025</td>
-      <td>Melhoria do protótipo</td>
-    </tr>
-    <tr>
-      <td>0.3</td>
-      <td>17/12/2025</td>
-      <td>Fluxo de downcause integrado</td>
-    </tr>
-  </tbody>
-</table>
 
-<div class="footer">
-  <p>Especificação Técnica - Monitor Radius v0.3</p>
-  <p>Última atualização: 17 de dezembro de 2025</p>
+
+
 </div>
 
 </body>
