@@ -209,14 +209,52 @@
       color: #607d8b;
       font-weight: bold;
     }
+
+    /* Print-specific styles */
+    @media print {
+      body {
+        margin: 20px;
+      }
+
+      h1, h2, h3, h4 {
+        page-break-after: avoid;
+      }
+
+      .notificacao-box,
+      .pre-requisitos,
+      .alerta,
+      .info,
+      .destaque,
+      table,
+      blockquote {
+        page-break-inside: avoid;
+      }
+
+      img {
+        page-break-inside: avoid;
+        page-break-before: auto;
+        page-break-after: auto;
+        max-height: 600px;
+      }
+
+      .notificacao-box {
+        page-break-inside: avoid;
+        page-break-before: auto;
+      }
+
+      hr {
+        page-break-after: avoid;
+      }
+
+      ul, ol {
+        page-break-inside: avoid;
+      }
+    }
   </style>
 </head>
 <body>
 
-<h1>Especificação Técnica</h1>
-<h2>Monitoramento Radius</h2>
-
-<hr>
+<h1>Especificação Técnica - Monitor Radius</h1>
 
 <h2><span class="section-number">1.</span> VISÃO GERAL</h2>
 
@@ -259,10 +297,7 @@
     <li>Disparado quando desconexões excedem limite configurado, indica aumento anormal na taxa de desconexões</li>
   </ul>
   <div class="precisao">Precisão de entrega de notificação: 1 a 40 segundos</div>
-  <div class="image-placeholder">
-    <p>📊 Imagem: Notificação de alto volume</p>
-    <p><small>(../../assets/high_volume.png)</small></p>
-  </div>
+  <img src="../../assets/high_volume.png" alt="Notificação de alto volume" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
 </div>
 
 <div class="notificacao-box">
@@ -271,10 +306,7 @@
     <li>Notificação de quedas simultâneas na mesma região (triagem por bairro)</li>
   </ul>
   <div class="precisao">Precisão de entrega de notificação: 1 a 130 segundos</div>
-  <div class="image-placeholder">
-    <p>📊 Imagem: Notificação de queda regional</p>
-    <p><small>(../../assets/outage_detection.png)</small></p>
-  </div>
+  <img src="../../assets/outage_detection.png" alt="Notificação de queda regional" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
 </div>
 
 <div class="notificacao-box">
@@ -284,10 +316,7 @@
     <li><strong>Funcionalidade depende</strong> de dados referentes a ONU cadastrados e integrados ao SGP (seção "FTTx Detalhes" no contrato)</li>
   </ul>
   <div class="precisao">Precisão de entrega: 1 a 360 segundos</div>
-  <div class="image-placeholder">
-    <p>📊 Imagem: Notificação de Análise de Causa de Queda Regional</p>
-    <p><small>(../../assets/outage_possible_cause.png)</small></p>
-  </div>
+  <img src="../../assets/outage_possible_cause.png" alt="Notificação de Análise de Causa de Queda Regional" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
 </div>
 
 <div class="notificacao-box">
@@ -297,10 +326,7 @@
     <li>Permite fechamento do incidente</li>
   </ul>
   <div class="precisao">Precisão de entrega de notificação: 1 a 130 segundos</div>
-  <div class="image-placeholder">
-    <p>📊 Imagem: Notificação de resolução queda regional</p>
-    <p><small>(../../assets/outage_resolution.png)</small></p>
-  </div>
+  <img src="../../assets/outage_resolution.png" alt="Notificação de resolução queda regional" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
 </div>
 
 <div class="notificacao-box">
@@ -310,10 +336,7 @@
     <li><strong>Funcionalidade depende</strong> de dados referentes a ONU cadastrados e integrados ao SGP (seção "FTTx Detalhes" no contrato)</li>
   </ul>
   <div class="precisao">Precisão de entrega de notificação: 1 a 360 segundos</div>
-  <div class="image-placeholder">
-    <p>📊 Imagem: Notificação de anomalia individual detectada</p>
-    <p><small>(../../assets/dc_info.png)</small></p>
-  </div>
+  <img src="../../assets/dc_info.png" alt="Notificação de anomalia individual detectada" style="max-width: 100%; height: auto; margin: 1em auto; border: 1px solid #ddd; display: block;">
 </div>
 
 <h3>3.2 Parâmetros Configuráveis</h3>

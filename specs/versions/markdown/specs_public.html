@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Especificação Técnica - Monitoramento Radius</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1, h2, h3, h4 {
+      color: #2c3e50;
+    }
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.3em;
+      border-bottom: 4px solid #2c3e50;
+      padding-bottom: 0.3em;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.3em;
+      margin-top: 2.5em;
+      font-size: 1.6em;
+    }
+    h3 {
+      margin-top: 1.8em;
+      font-size: 1.3em;
+      color: #34495e;
+    }
+    h4 {
+      margin-top: 1.5em;
+      font-size: 1.1em;
+      color: #34495e;
+    }
+    .notificacao-box {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1.2em;
+      margin: 1.5em 0;
+    }
+    .notificacao-box h4 {
+      margin-top: 0;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.5em;
+    }
+    .precisao {
+      background-color: #e3f2fd;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      margin-top: 0.8em;
+      font-weight: bold;
+      color: #1976d2;
+    }
+    ul {
+      padding-left: 25px;
+    }
+    .page-break {
+      page-break-after: always;
+    }
+    .footer {
+      margin-top: 4em;
+      padding-top: 2em;
+      border-top: 2px solid #ddd;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+<h1>Especificação Técnica</h1>
+<h2>Monitoramento Radius</h2>
+<h2>1. VISÃO GERAL</h2>
+<p>Sistema de monitoramento de eventos de autenticação com detecção de anomalias em tempo próximo ao real.</p>
+<ul>
+  <li>Detecção de quedas regionais</li>
+  <li>Entrega de alertas via Telegram e/ou WhatsApp</li>
+  <li>Análise de causa raiz</li>
+  <li>Monitoramento contínuo de eventos</li>
+  <li>Acompanhamento do ciclo de vida de incidentes</li>
+</ul>
+<div class="page-break"></div>
+<h2>2. INTEGRAÇÃO</h2>
+<p>A integração com a fonte de dados é realizada via API REST, com coleta periódica de eventos de autenticação e processamento assíncrono em pipeline interno.</p>
+<div class="page-break"></div>
+<h2>3. ARQUITETURA</h2>
+<p>O sistema é implementado como um microsserviço escrito em Go, projetado para ser acoplado a qualquer VM com acesso à rede. O binário compilado é distribuído via imagem Docker e provisionado através de um pipeline de CI/CD, eliminando dependências de ambiente e garantindo reprodutibilidade entre deploys. A ausência de runtime externo e o baixo consumo de recursos tornam o serviço adequado para execução em infraestruturas de menor porte.</p>
+<div class="page-break"></div>
+<h2>4. TIPOS DE NOTIFICAÇÃO</h2>
+<div class="notificacao-box">
+  <h4>Alto volume de desconexões</h4>
+  <img src="../../assets/high_volume.png" style="width:70%;display:block;margin:auto;">
+</div>
+<div class="notificacao-box">
+  <h4>Detecção de queda regional</h4>
+  <img src="../../assets/outage_detection.png" style="width:70%;display:block;margin:auto;">
+</div>
+<div class="notificacao-box">
+  <h4>Análise de causa raiz</h4>
+  <img src="../../assets/outage_possible_cause.png" style="width:70%;display:block;margin:auto;">
+</div>
+<div class="notificacao-box">
+  <h4>Resolução de incidente</h4>
+  <img src="../../assets/outage_resolution.png" style="width:70%;display:block;margin:auto;">
+</div>
+<div class="notificacao-box">
+  <h4>Anomalia de sessão individual</h4>
+  <img src="../../assets/dc_info.png" style="width:70%;display:block;margin:auto;">
+</div>
+<div class="page-break"></div>
+<h3>4.1 Relatórios</h3>
+<p>Relatórios diários são gerados automaticamente a partir dos eventos processados no período correspondente.</p>
+<div class="notificacao-box">
+  <h4>Relatório Diário</h4>
+  <img src="../../assets/daily_report.png" style="width:70%;display:block;margin:auto;">
+  <div class="precisao">
+    Geração automática com base nos eventos processados no período
+  </div>
+</div>
+<div class="page-break"></div>
+<h3>4.2 Entrega de Notificações</h3>
+<p>As notificações geradas pelo sistema são entregues nos canais de comunicação configurados para a operação.</p>
+<ul>
+  <li>Envio para grupos e canais via Telegram</li>
+  <li>Envio para grupos via WhatsApp</li>
+</ul>
+<div class="page-break"></div>
+<h2>5. CARACTERÍSTICAS TÉCNICAS</h2>
+<ul>
+  <li>Implementado em Go</li>
+  <li>Execução em ambiente self-hosted (VM dedicada)</li>
+  <li>Pipeline de CI/CD automatizado</li>
+  <li>Backup e retenção de dados configuráveis via TTL</li>
+  <li>Observabilidade via logs estruturados e métricas operacionais</li>
+</ul>
+<div class="footer">
+  <p><strong>Monitoramento Radius</strong></p>
+  <p>Documento técnico &mdash; 2026</p>
+</div>
+</body>
+</html>
